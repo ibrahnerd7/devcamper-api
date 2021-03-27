@@ -9,7 +9,7 @@ const connectDB=async()=>{
         useUnifiedTopology:true
 
     })
-    console.log(`MongoD connected ${conn.connection.host}`)
+    console.log(`MongoD connected ${conn.connection.host}`.cyan.underline.bold)
 
     } catch (error) {
         
