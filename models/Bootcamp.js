@@ -98,11 +98,11 @@ const BootCampSchema=new mongoose.Schema(
         type: Date,
         default: Date.now
       },
-      user: {
-        type: mongoose.Schema.ObjectId,
-        ref: 'User',
-        required: true
-      }
+      // user: {
+      //   type: mongoose.Schema.ObjectId,
+      //   ref: 'User',
+      //   required: true
+      // }
 },
 {
     toJSON: { virtuals: true },
@@ -110,4 +110,4 @@ const BootCampSchema=new mongoose.Schema(
   }
 );
 
-module.exports=BootCampSchema
+module.exports=mongoose.model('Bootcamp',BootCampSchema)
