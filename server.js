@@ -4,6 +4,8 @@ const dotenv =require('dotenv');
 const morgan=require('morgan');
 const colors=require('colors');
 const mongoSanitize=require('express-mongo-sanitize');
+const helmet=require('helmet');
+const xssClean=require('xss-clean');
 const fileupload=require('express-fileupload');
 const cookieParser=require('cookie-parser');
 const errorHandler=require('./middlewares/error');
@@ -40,7 +42,13 @@ if(process.env.NODE_ENV=='development'){
 app.use(fileupload());
 
 //Sanitize data
-app.use(mongoSanitize())
+app.use(mongoSanitize());
+
+//Set security headers
+app.use(helmet());
+
+//Prevent XSS atacks
+app.user(xssClean());
 
 //Set static folder
 app.use(express.static(path.join(__dirname,'public')))
