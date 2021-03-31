@@ -48,15 +48,15 @@ app.use(fileupload());
 app.use(mongoSanitize());
 
 //Set security headers
-app.use(helmet());
+// app.use(helmet());
 
 //Prevent XSS atacks
-app.user(xssClean());
+app.use(xssClean());
 
 //Rate Limit
 const limiter = rateLimit({
     windowMs: 10 * 60 * 1000,// 10ms
-    max: 1
+    max: 1000
 });
 
 app.use(limiter);
